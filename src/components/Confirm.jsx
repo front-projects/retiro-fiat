@@ -10,6 +10,7 @@ export default function Confirm() {
   const typingTimeoutRef = useRef(null);
   const [result, setResult] = useState();
   const [openModal, setOpenModal] = useState(false);
+  const sumRef = useRef();
 
   const changeResult = (value) => {
     setTimeout(() => {
@@ -54,7 +55,15 @@ export default function Confirm() {
             <input
               type="text"
               placeholder="Mínimo:2.6"
+              ref={sumRef}
               value={value}
+              onClick={() => {
+                setTimeout(() => {
+                  sumRef.current.placeholder = "";
+                  sumRef.current.className =
+                    "text-black text-[20px] flex-grow mr-[20px] caret-transparent";
+                }, [500]);
+              }}
               onChange={handleChange}
               className="text-black text-[20px] flex-grow mr-[20px]"
             />
